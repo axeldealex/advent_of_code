@@ -42,7 +42,7 @@ def find_numbers(X):
             num_found[i] = s
             break
 
-    # then we remove the -1 index, as it is invalid (try in case of edge cases where every number is in the word)
+    # then we remove the -1 index, as it is invalid (try in case of edge cases where everything lines up)
     dict_idx = list(num_found.keys())
     try:
         dict_idx.remove(-1)
