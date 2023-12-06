@@ -1,6 +1,6 @@
 input_text = []
 # start by parsing a single line
-with open("day3/final_input.txt", 'r') as f:
+with open("day3/test_input.txt", 'r') as f:
     line = f.readline()
     # stops if EOF
     while line != '':
@@ -39,56 +39,20 @@ def extract_features(line, num_dict, symbol_dict, row_num, flag=0, flag_while=0)
                     break
             num_dict[row_num].append([min_index, max_index])
         # special character otherwise
-        else:
+        elif s == '*':
             # updates the list for that row entry with new index
             symbol_dict[row_num].append(i)
 
     return num_dict, symbol_dict
 
 
-def number_checking(num_dict, symbol_dict):
-    """
-    Checks whether a number should be included in the final value calculation.
-    Returns the sum of all the numbers.
-    """
-    # inits the counting variable
-    valid_sum = 0
-    max_rows = len(num_dict.keys()) - 1
-    # goes over all the rows
-    for row in num_dict.keys():
-        num_row = num_dict[row]
-        for numbers in num_row:
-            # if not the first row, checks row above
-            if row > 0:
-                if check_symbol_presence(symbol_dict[row - 1], numbers[0], numbers[1]):
-                    print(f'{int(input_text[row][numbers[0]:numbers[1] + 1])}, row above')
-                    valid_sum += int(input_text[row][numbers[0]:numbers[1]+1])
-                    continue
-            # if not last row, checks row below
-            if row < max_rows:
-                if check_symbol_presence(symbol_dict[row + 1], numbers[0], numbers[1]):
-                    print(f'{int(input_text[row][numbers[0]:numbers[1] + 1])}, row below')
-                    valid_sum += int(input_text[row][numbers[0]:numbers[1]+1])
-                    continue
-            # checks the same row
-            if check_symbol_presence(symbol_dict[row], numbers[0], numbers[1]):
-                print(f'{int(input_text[row][numbers[0]:numbers[1] + 1])}, same row')
-                valid_sum += int(input_text[row][numbers[0]:numbers[1] + 1])
-                continue
-
-    return valid_sum
+def gear_checking(num_dict, symbol_dict):
+    counter = 0
 
 
-def check_symbol_presence(symbol_row, min_idx, max_idx):
-    print(min_idx)
-    print(max_idx)
-    print(symbol_row)
-
-    for symbol in symbol_row:
-        if max_idx+1 >= symbol >= min_idx-1:
-            return True
-    return False
-
+    if counter == 2:
+        return
+    pass
 
 
 # inits some empty dicts for location saving
@@ -107,5 +71,5 @@ for line in input_text:
     num_dict, symbol_dict = extract_features(line, num_dict, symbol_dict, row_num)
 
 # calculates the final sum
-final_sum = number_checking(num_dict, symbol_dict)
+final_sum = gear_checking(num_dict, symbol_dict)
 print(final_sum)
