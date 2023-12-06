@@ -80,15 +80,10 @@ def number_checking(num_dict, symbol_dict):
 
 
 def check_symbol_presence(symbol_row, min_idx, max_idx):
-    print(min_idx)
-    print(max_idx)
-    print(symbol_row)
-
     for symbol in symbol_row:
         if max_idx+1 >= symbol >= min_idx-1:
             return True
     return False
-
 
 
 # inits some empty dicts for location saving
