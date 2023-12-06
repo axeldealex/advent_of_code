@@ -1,3 +1,6 @@
+# THIS IS SUPER BAD CODE - COPIES CAN BE MULTIPLIED INSTEAD OF CALCULATED AGAIN EVERY TIME
+# copies = get_hits(line)
+
 def get_hits(scratch_card):
     your_numbers, winning_numbers = extract_numbers(scratch_card=scratch_card)
     hits = 0
