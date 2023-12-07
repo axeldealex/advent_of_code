@@ -37,6 +37,11 @@ for line in concat_file:
 # print(seeds)
 lowest_loc = -1
 # go through all the seeds
+#TODO
+# to make this work for part 2, you need to track ranges of seeds and split them
+# if their paths diverge. That is an insane exercise in bookkeeping that I frankly,
+# do not care for to do rn.
+
 for seed in seeds:
     seed = int(seed)
     # and for all the mappings
